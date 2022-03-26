@@ -3,7 +3,6 @@
     <header class="on-boarding__header">
       <img class="on-boarding__header-src" :src="onBoard.imgSrc" alt="Image de présentation de l'introduction" />
     </header>
-    <InputRange :answers="onSurvey.questions[0].answers" :title="onSurvey.questions[0].title" />
     <div class="on-boarding__content">
       <h1 class="on-boarding__logo">
         {{ onBoard.title }}
