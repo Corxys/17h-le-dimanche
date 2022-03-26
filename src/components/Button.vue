@@ -3,12 +3,14 @@
     {{ value }}
   </button>
 </template>
+
 <script>
 export default {
   name: 'ButtonComponent',
   props: ['value']
 }
 </script>
+
 <style scoped>
   .button {
     background-color: pink;
