@@ -61,7 +61,7 @@ export default {
               {
                 id: 4,
                 text: 'J\'ai perdu l\'appétit ou je me réfugie dans le frigo de manière incontrôlée',
-                selected: 0,
+                selected: 0
               }
             ]
           }
