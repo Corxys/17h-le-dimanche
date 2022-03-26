@@ -19,3 +19,4 @@ export default {
     border-radius: 50px;
   }
 </style>
+
