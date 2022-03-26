@@ -1,9 +1,14 @@
 export default {
+  // source directory
+  srcDir: 'src',
+  // build output directory
+  buildDir: 'dist',
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: '17h-le-dimanche',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'fr'
     },
     meta: [
       { charset: 'utf-8' },
@@ -18,6 +23,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    // reset CSS, see : https://nicolas-cusan.github.io/destyle.css/
+    'node_modules/destyle.css/destyle.min.css',
+    '~/assets/styles/main.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
