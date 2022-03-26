@@ -38,13 +38,23 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module'
+    // '@nuxtjs/eslint-module',
+    '@nuxtjs/router-extras',
+    ['@nuxtjs/google-fonts',
+      {
+        families: {
+          'DM+Sans': [400, 500, 600],
+          'DM+Serif+Display': [400]
+        }
+      }
+    ]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-svg-loader'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -55,5 +65,12 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      scss: {
+        additionalData: `
+          @import "@/assets/styles/variables";
+        `
+      }
+    }
   }
 }
