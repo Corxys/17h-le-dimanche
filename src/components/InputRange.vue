@@ -20,7 +20,7 @@ export default {
   ],
   data() {
     return {
-      selected: '1'
+      selected: 'Z'
     }
   }
 }

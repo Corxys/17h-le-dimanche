@@ -11,9 +11,9 @@
       </h1>
       <div class="survey__questions">
         <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
-          <h2 class="survey__subtitlte">
+          <!-- <h2 class="survey__subtitlte">
             {{ question.title }}
-          </h2>
+          </h2> -->
           <InputRange :title="question.title" :answers="question.answers" />
         </div>
       </div>
@@ -38,24 +38,20 @@ export default {
             title: 'Comment ça se passe dans ton assiette ?',
             answers: [
               {
-                id: 1,
-                text: 'Rien à signaler, je mange bien',
-                selected: 0
+                id: 'Z',
+                text: 'Rien à signaler, je mange bien'
               },
               {
-                id: 2,
-                text: 'J\'ai parfois l\'appétit coupé ou besoin de grignoter',
-                selected: 0
+                id: 'A',
+                text: 'J\'ai parfois l\'appétit coupé ou besoin de grignoter'
               },
               {
-                id: 3,
-                text: 'Je saute souvent les repas ou les double',
-                selected: 0
+                id: 'B',
+                text: 'Je saute souvent les repas ou les double'
               },
               {
-                id: 4,
-                text: 'J\'ai perdu l\'appétit ou je me réfugie dans le frigo de manière incontrôlée',
-                selected: 0,
+                id: 'C',
+                text: 'J\'ai perdu l\'appétit ou je me réfugie dans le frigo de manière incontrôlée'
               }
             ]
           }
@@ -78,11 +74,109 @@ export default {
           questions: [
             {
               id: 1,
-              title: 'Question 1'
-            },
+              title: 'Comment ça se passe ton sommeil ?',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Tout va bien, comme d\'habitude'
+                },
+                {
+                  id: 'A',
+                  text: 'Je dors peu ou beaucoup, mais comme d\'habitude'
+                },
+                {
+                  id: 'B',
+                  text: 'Du mal à m\'endormir'
+                },
+                {
+                  id: 'C',
+                  text: 'Je dors beaucoup plus que d\'habitude'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 3,
+          title: 'Vie sociale et relationnelle ',
+          questions: [
             {
-              id: 2,
-              title: 'Question 2'
+              id: 1,
+              title: 'Comment ça se passe avec ton entourage ?',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Je suis très entourée, il y a peu de conflit'
+                },
+                {
+                  id: 'A',
+                  text: 'Je me sens entourée la plupart du temps mais il y a des conflits difficiles'
+                },
+                {
+                  id: 'B',
+                  text: 'Je me sens seul.e la plupart du temps et ai du mal à gérer les conflits, je me force à sortir'
+                },
+                {
+                  id: 'C',
+                  text: 'Je suis isolée, je ne sors plus, j\'ai beaucoup de problèmes relationnels'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 4,
+          title: 'Anxiété, stress',
+          questions: [
+            {
+              id: 1,
+              title: 'Es-tu sujet au stress ?',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Pas plus que d\'habitude'
+                },
+                {
+                  id: 'A',
+                  text: 'Je me sens tendu par moment, je rumine'
+                },
+                {
+                  id: 'B',
+                  text: 'Je me sens stressé.e souvent, mes pensées sont envahissantes'
+                },
+                {
+                  id: 'C',
+                  text: 'Je me sens mal au quotidien ou je fais des crises d\'angoisse'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 5,
+          title: 'Attention',
+          questions: [
+            {
+              id: 1,
+              title: 'Comment vis-tu ton quotidien ?',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Je mène mes projets à court et long terme'
+                },
+                {
+                  id: 'A',
+                  text: 'Je gère au quotidien mais j\'ai du mal à me concentrer parfois'
+                },
+                {
+                  id: 'B',
+                  text: 'J\'ai moins de projets, je m\'éparpille dans ma concentration'
+                },
+                {
+                  id: 'C',
+                  text: 'Je n\'ai pas de projet j\'essaye de gérer au jour le jour c\'est déjà difficile'
+                }
+              ]
             }
           ]
         }
@@ -161,6 +255,6 @@ export default {
 
 <router>
   {
-    path: '/questionnement'
+    path: '/questionnaire'
   }
 </router>
