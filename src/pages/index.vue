@@ -3,6 +3,7 @@
     <header class="on-boarding__header">
       <img class="on-boarding__header-src" :src="onBoard.imgSrc" alt="Image de présentation de l'introduction" />
     </header>
+    <InputRange :answers="onSurvey.questions[0].answers" :title="onSurvey.questions[0].title" />
     <div class="on-boarding__content">
       <h1 class="on-boarding__logo">
         {{ onBoard.title }}
@@ -35,6 +36,38 @@ export default {
   name: 'OnBoardingPage',
   data () {
     return {
+      onSurvey: {
+        id: 1,
+        title: 'Alimentation',
+        questions: [
+          {
+            id: 1,
+            title: 'Comment ça se passe dans ton assiette ?',
+            answers: [
+              {
+                id: 1,
+                text: 'Rien à signaler, je mange bien',
+                selected: 0
+              },
+              {
+                id: 2,
+                text: 'J\'ai parfois l\'appétit coupé ou besoin de grignoter',
+                selected: 0
+              },
+              {
+                id: 3,
+                text: 'Je saute souvent les repas ou les double',
+                selected: 0
+              },
+              {
+                id: 4,
+                text: 'J\'ai perdu l\'appétit ou je me réfugie dans le frigo de manière incontrôlée',
+                selected: 0,
+              }
+            ]
+          }
+        ]
+      },
       onBoard: {
         id: 1,
         title: 'Bienvenue sur \n 17h le dimanche !',
