@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Tutorial />
+    <!-- <Tutorial /> -->
+    <InputRange />
     <h1>{{ counter }}</h1>
   </div>
 </template>
