@@ -6,14 +6,14 @@
     <div class="buttons-wrapper">
       <div class="button-container">
         <p>Curieux ? En questionnement ?</p>
-        <NuxtLink to="/formulaire">
-          <Button value="Découvrir" />
+        <NuxtLink to="/questionnement">
+          <ButtonSimple value="Découvrir" />
         </NuxtLink>
       </div>
       <div class="button-container">
         <p>Besoin d'aide ?</p>
-        <NuxtLink to="/formulaire">
-          <Button value="Être orienté" />
+        <NuxtLink to="/questionnement">
+          <ButtonSimple value="Être orienté" />
         </NuxtLink>
       </div>
     </div>

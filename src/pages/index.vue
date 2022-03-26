@@ -78,8 +78,6 @@ export default {
     ...mapMutations('introduction', ['UPDATE_STEP']),
     changeStep (event) {
       const steps = document.querySelectorAll('.on-boarding__step')
-
-
       if (event.target.id) {
         this.UPDATE_STEP({ id: parseInt(event.target.id[5], 10) })
       } else {
