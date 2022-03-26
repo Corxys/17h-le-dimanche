@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <div class="survey__cursor" />
+      <div class="survey__cursor" :style="{ top: `calc((50% / 7) * ${currentStepSymptoms - 1})` }" />
       <div class="survey__separator" />
     </div>
     <div class="survey__content">
@@ -11,9 +11,6 @@
       </h1>
       <div class="survey__questions">
         <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
-          <!-- <h2 class="survey__subtitlte">
-            {{ question.title }}
-          </h2> -->
           <InputRange :title="question.title" :answers="question.answers" />
         </div>
       </div>
@@ -186,7 +183,13 @@ export default {
   computed: {
     ...mapState({
       currentStepSymptoms: state => state.survey.currentStepSymptoms
-    })
+    }),
+
+    cssVars () {
+      return {
+        '--multiplicator': this.currentStepSymptoms
+      }
+    }
   },
   methods: {
     ...mapMutations('survey', ['UPDATE_STEP_SYMPTOMS']),
@@ -208,26 +211,45 @@ export default {
     &__timeline {
       position: absolute;
       top: 50px;
-      left: 0px;
+      left: 30px;
       bottom: 50px;
       width: 30px;
-      background-color: green;
       display: flex;
       justify-content: center;
     }
 
     &__line {
+      position: relative;
       width: 3px;
       height: 100%;
-      background-color: red;
+      background-color: $secondary;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        left: calc(-11px / 2);
+        width: 15px;
+        height: 15px;
+        background-color: $background;
+        border-radius: 20px;
+        border: 3px solid $secondary;
+      }
+
+      &:before {
+        top: 0;
+      }
+
+      &:after {
+        bottom: 0;
+      }
     }
 
     &__cursor {
       position: absolute;
-      top: calc((0% / 7) * 2);
       width: 15px;
       height: 15px;
       background-color: blue;
+      transition: top 0.2s ease;
     }
 
     &__separator {
@@ -235,16 +257,16 @@ export default {
       top: calc(50% - (15px / 2));
       width: 15px;
       height: 15px;
-      background-color: red;
+      background-color: $secondary;
       border-radius: 20px;
     }
 
     &__content {
       display: flex;
       flex-direction: column;
-      margin-left: 30px;
-      //height: calc(100vh - )
-      //align-items: center;
+      justify-content: space-between;
+      margin-left: 60px;
+      height: 100%;
     }
 
     button {
@@ -255,6 +277,6 @@ export default {
 
 <router>
   {
-    path: '/questionnaire'
+    path: '/questionnaire-symptomes'
   }
 </router>
