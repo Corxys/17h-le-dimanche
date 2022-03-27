@@ -1,7 +1,7 @@
 <template>
   <div class="results">
     <h1 class="results__title">
-      Nous vous conseillons
+      Nous te conseillons
     </h1>
     <div class="results__cards">
       <div class="results__card">

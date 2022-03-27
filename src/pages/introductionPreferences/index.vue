@@ -5,10 +5,10 @@
     </div>
       <div class="introduction-survey__content">
         <h1 class="introduction-survey__title">
-          Titre de la page
+          Trouve le professionnel qui te convient
         </h1>
         <p class="introduction-survey__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel viverra risus, et ullamcorper felis. Duis neque nunc, aliquet eu est id, venenatis tempor arcu. Nullam accumsan magna ullamcorper leo sagittis.</p>
+          Parle-nous de tes préférences.</p>
         <router-link to="/questionnaire-preferences">
           <ButtonSimple value="Commencer" />
         </router-link>
