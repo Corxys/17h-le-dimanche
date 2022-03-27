@@ -15,5 +15,8 @@ export default {
     } else if (payload.type === 'Attention') {
       state.answers['Attention'] = payload.id
     }
+  },
+  UPDATE_STEP_PREFERENCES (state, payload) {
+    state.currentStepPreferences = payload.id
   }
 }

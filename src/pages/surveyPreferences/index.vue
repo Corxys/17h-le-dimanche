@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc((50% - (15px / 2)) + (50% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
+      <img class="survey__cursor" :style="{ top: `calc((50% - (15px / 2)) + (50% / 5) * ${currentStepPreferences - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
       <div class="survey__separator" />
     </div>
     <div class="survey__content">
@@ -123,21 +123,29 @@ export default {
   },
   computed: {
     ...mapState({
-      currentStepSymptoms: state => state.survey.currentStepSymptoms
+      currentStepPreferences: state => state.survey.currentStepPreferences
     }),
 
     cssVars () {
       return {
-        '--multiplicator': this.currentStepSymptoms
+        '--multiplicator': this.currentStepPreferences
       }
     }
   },
   methods: {
-    ...mapMutations('survey', ['UPDATE_STEP_SYMPTOMS']),
+    ...mapMutations('survey', ['UPDATE_STEP_PREFERENCES']),
     changeStep () {
-      const targetedQuestion = this.data.find(question => question.id === 1)
+      const targetedQuestion = this.data.find(question => question.id === this.currentStepPreferences + 1)
       this.onSurvey = targetedQuestion
-      this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
+      this.UPDATE_STEP_PREFERENCES({ id: this.currentStepPreferences + 1 })
+
+      if (this.currentStepPreferences === this.data.length + 1) {
+        const targetedQuestion = this.data.find(question => question.id === 1)
+        this.onSurvey = targetedQuestion
+        this.UPDATE_STEP_PREFERENCES({ id: 1 })
+        // this.sendSurveySymptomsRequest()
+        this.$router.push('/resultats-preferences')
+      }
     }
   }
 }
