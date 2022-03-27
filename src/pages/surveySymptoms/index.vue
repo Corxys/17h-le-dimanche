@@ -226,8 +226,8 @@ export default {
         const targetedQuestion = this.data.find(question => question.id === 1)
         this.onSurvey = targetedQuestion
         this.UPDATE_STEP_SYMPTOMS({ id: 1 })
-        this.sendSurveySymptomsRequest()
-        // this.$router.push('/resultats-symptomes')
+        // this.sendSurveySymptomsRequest()
+        this.$router.push('/resultats-symptomes')
       }
     }
   }

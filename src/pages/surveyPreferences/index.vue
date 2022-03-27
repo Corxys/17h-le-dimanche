@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc((50% - (15px / 2)) + (50% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
+      <img class="survey__cursor" :style="{ top: `calc((50% - (15px / 2)) + (50% / 5) * ${currentStepPreferences - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
       <div class="survey__separator" />
     </div>
     <div class="survey__content">
@@ -13,6 +13,7 @@
         <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
           <h2 class="survey__question-title">
             {{ question.title }}
+            {{ currentStepPreferences }}
           </h2>
           <InputText v-if="question.type == 'text'" :title="question.title" />
           <RadioBox v-else-if="question.type == 'radio'" v-for="answer of question.answers" :key="answer.id" :label="answer.text" :value="answer.id" v-model="answerSelected" />
@@ -60,11 +61,25 @@ export default {
         {
           id: 1,
           title: 'Genre',
-          // type: 'radio',
           questions: [
             {
               id: 1,
-              title: 'Comment ça se passe dans ton assiette ?'
+              type: 'radio',
+              title: 'Tu préfères consulter...',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Un homme'
+                },
+                {
+                  id: 'A',
+                  text: 'Une femme'
+                },
+                {
+                  id: 'B',
+                  text: 'Indifférent'
+                }
+              ]
             }
           ]
         },
@@ -109,21 +124,21 @@ export default {
   },
   computed: {
     ...mapState({
-      currentStepSymptoms: state => state.survey.currentStepSymptoms
+      currentStepPreferences: state => state.survey.currentStepPreferences
     }),
 
     cssVars () {
       return {
-        '--multiplicator': this.currentStepSymptoms
+        '--multiplicator': this.currentStepPreferences
       }
     }
   },
   methods: {
-    ...mapMutations('survey', ['UPDATE_STEP_SYMPTOMS']),
+    ...mapMutations('survey', ['UPDATE_STEP_PREFERENCES']),
     changeStep () {
-      const targetedQuestion = this.data.find(question => question.id === 1)
+      const targetedQuestion = this.data.find(question => question.id === this.currentStepPreferences + 1)
       this.onSurvey = targetedQuestion
-      this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
+      this.UPDATE_STEP_PREFERENCES({ id: this.currentStepPreferences + 1 })
     }
   }
 }
