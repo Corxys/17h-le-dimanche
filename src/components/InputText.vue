@@ -1,10 +1,7 @@
 <template>
   <div class="form__item">
-    <h2 class="form__item--title">
-      {{ title }}
-    </h2>
     <div class="form__item--text">
-      <label for="first name">{{ title }}:</label>
+      <!-- <label for="first name">{{ title }}:</label> -->
       <input type="text" v-model="userAddress" :placeholder="title" />
     </div>
   </div>

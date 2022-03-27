@@ -19,8 +19,7 @@
           </div>
         </div>
       </div>
-      <Button v-if="currentStepSymptoms === data.length" value="Fin partie 1" />
-      <Button v-else value="Suivant" :change-step="changeStep" />
+      <Button value="Suivant" :change-step="changeStep" />
     </div>
   </div>
 </template>

@@ -5,23 +5,14 @@
 <!--    </figure>-->
     <div class="buttons-wrapper">
       <div class="button-container">
-<<<<<<< HEAD
-        <p>Curieux ? En questionnement ?</p>
-        <NuxtLink to="/questionnaire-symptomes">
-=======
         <p>En questionnement ?</p>
         <router-link to="/introduction-symptomes">
->>>>>>> 7f610918ab560db26d81c65f6c567973c52a3594
           <ButtonSimple value="Découvrir" />
         </router-link>
       </div>
       <div class="button-container">
         <p>Besoin d'aide ?</p>
-<<<<<<< HEAD
-        <NuxtLink to="/questionnaire-symptomes">
-=======
         <router-link to="/introduction-symptomes">
->>>>>>> 7f610918ab560db26d81c65f6c567973c52a3594
           <ButtonSimple value="Être orienté" />
         </router-link>
       </div>

@@ -11,8 +11,11 @@
       </h1>
       <div class="survey__questions">
         <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
+          <h2 class="survey__question-title">
+            {{ question.title }}
+          </h2>
           <InputText v-if="question.type == 'text'" :title="question.title" />
-          <InputRange v-if="question.type == 'radio'" :title="question.title" :answers="question.answers" />
+          <RadioBox v-else-if="question.type == 'radio'" v-for="answer of question.answers" :key="answer.id" :label="answer.text" :value="answer.id" v-model="answerSelected" />
         </div>
       </div>
       <Button value="Suivant" :change-step="changeStep" />
@@ -27,6 +30,7 @@ export default {
   name: 'SurveyPage',
   data () {
     return {
+      answerSelected: 'Z',
       onSurvey: {
         id: 1,
         title: 'Genre',
@@ -194,6 +198,21 @@ export default {
 
     button {
       align-self: center;
+    }
+
+    &__question {
+      &-answers {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-answer {
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
     }
   }
 </style>
