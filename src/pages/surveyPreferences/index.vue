@@ -13,7 +13,6 @@
         <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
           <h2 class="survey__question-title">
             {{ question.title }}
-            {{ currentStepPreferences }}
           </h2>
           <InputText v-if="question.type == 'text'" :title="question.title" />
           <RadioBox v-else-if="question.type == 'radio'" v-for="answer of question.answers" :key="answer.id" :label="answer.text" :value="answer.id" v-model="answerSelected" />
@@ -139,6 +138,14 @@ export default {
       const targetedQuestion = this.data.find(question => question.id === this.currentStepPreferences + 1)
       this.onSurvey = targetedQuestion
       this.UPDATE_STEP_PREFERENCES({ id: this.currentStepPreferences + 1 })
+
+      if (this.currentStepPreferences === this.data.length + 1) {
+        const targetedQuestion = this.data.find(question => question.id === 1)
+        this.onSurvey = targetedQuestion
+        this.UPDATE_STEP_PREFERENCES({ id: 1 })
+        // this.sendSurveySymptomsRequest()
+        this.$router.push('/resultats-preferences')
+      }
     }
   }
 }
