@@ -60,11 +60,25 @@ export default {
         {
           id: 1,
           title: 'Genre',
-          // type: 'radio',
           questions: [
             {
               id: 1,
-              title: 'Comment ça se passe dans ton assiette ?'
+              type: 'radio',
+              title: 'Tu préfères consulter...',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Un homme'
+                },
+                {
+                  id: 'A',
+                  text: 'Une femme'
+                },
+                {
+                  id: 'B',
+                  text: 'Indifférent'
+                }
+              ]
             }
           ]
         },
@@ -75,7 +89,7 @@ export default {
             {
               id: 1,
               type: 'text',
-              title: 'Adresse de ton domicile'
+              title: 'Adresse de ton domicile',
             }
           ]
         },
