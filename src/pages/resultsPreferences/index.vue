@@ -9,7 +9,9 @@
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <div class="results__card-footer">
           <img class="results__card-src" src="~/assets/images/1_psycho_17hledimanche.png" />
-          <ButtonSimple value="Plus" />
+          <router-link to="/praticien">
+            <ButtonSimple value="Plus" />
+          </router-link>
         </div>
       </div>
       <div class="results__card">
@@ -17,7 +19,9 @@
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <div class="results__card-footer">
           <img class="results__card-src" src="~/assets/images/2_sophro_17hledimanche.png" />
-          <ButtonSimple value="Plus" />
+          <router-link to="/praticien">
+            <ButtonSimple value="Plus" />
+          </router-link>
         </div>
       </div>
       <div class="results__card">
@@ -25,7 +29,9 @@
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <div class="results__card-footer">
           <img class="results__card-src" src="~/assets/images/2_sophro_17hledimanche.png" />
-          <ButtonSimple value="Plus" />
+          <router-link to="/praticien">
+            <ButtonSimple value="Plus" />
+          </router-link>
         </div>
       </div>
     </div>

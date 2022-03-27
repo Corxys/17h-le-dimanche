@@ -2,7 +2,7 @@
   <div class="form__item">
     <div class="form__item--text">
       <!-- <label for="first name">{{ title }}:</label> -->
-      <input type="text" v-model="userAddress" :placeholder="title" />
+      <input type="text" v-model="userAddress" :placeholder="title" value="33 rue du bonheur, 67666 Enfer"/>
     </div>
   </div>
 </template>
