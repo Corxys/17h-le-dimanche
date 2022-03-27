@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <div class="survey__cursor" :style="{ top: `calc((50% / 7) * ${currentStepSymptoms - 1})` }" />
+      <div class="survey__cursor" :style="{ bottom: `calc((50% / 3) * ${currentStepSymptoms - 1})` }" />
       <div class="survey__separator" />
     </div>
     <div class="survey__content">

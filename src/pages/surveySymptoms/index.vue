@@ -14,7 +14,8 @@
           <InputRange :title="question.title" :answers="question.answers" />
         </div>
       </div>
-      <Button value="Suivant" :change-step="changeStep" />
+      <Button v-if="currentStepSymptoms === data.length" value="Fin partie 1" />
+      <Button v-else value="Suivant" :change-step="changeStep" />
     </div>
   </div>
 </template>
@@ -95,7 +96,8 @@ export default {
         },
         {
           id: 3,
-          title: 'Vie sociale et relationnelle ',
+          // title: 'Vie sociale et relationnelle',
+          title: 'Social (conflit)',
           questions: [
             {
               id: 1,
@@ -123,7 +125,7 @@ export default {
         },
         {
           id: 4,
-          title: 'Anxiété, stress',
+          title: 'Anxiété/Stress',
           questions: [
             {
               id: 1,
