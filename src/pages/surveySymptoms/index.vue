@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <div class="survey__cursor" :style="{ top: `calc((50% / 7) * ${currentStepSymptoms - 1})` }" />
+      <div class="survey__cursor" :style="{ top: `calc((50% / 5) * ${currentStepSymptoms - 1})` }" />
       <div class="survey__separator" />
     </div>
     <div class="survey__content">
@@ -11,7 +11,12 @@
       </h1>
       <div class="survey__questions">
         <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
-          <InputRange :title="question.title" :answers="question.answers" />
+          <h2 class="survey__question-title">
+            {{ question.title }}
+          </h2>
+          <div class="survey__question-answers">
+            <RadioBox v-for="answer of question.answers" :key="answer.id" :label="answer.text" :value="answer.id" v-model="answerSelected" />
+          </div>
         </div>
       </div>
       <Button v-if="currentStepSymptoms === data.length" value="Fin partie 1" />
@@ -21,12 +26,13 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'SurveyPage',
   data () {
     return {
+      answerSelected: 'Z',
       onSurvey: {
         id: 1,
         title: 'Alimentation',
@@ -195,11 +201,33 @@ export default {
   },
   methods: {
     ...mapMutations('survey', ['UPDATE_STEP_SYMPTOMS']),
+    ...mapMutations('survey', ['STORE_SYMPTOMS']),
+    ...mapActions('survey', ['sendSurveySymptomsRequest']),
+
     changeStep () {
+      if (this.currentStepSymptoms === 1) {
+        this.STORE_SYMPTOMS({ type: 'Alimentation', id: this.answerSelected })
+      } else if (this.currentStepSymptoms === 2) {
+        this.STORE_SYMPTOMS({ type: 'Sommeil', id: this.answerSelected })
+      } else if (this.currentStepSymptoms === 3) {
+        this.STORE_SYMPTOMS({ type: 'Social (conflit)', id: this.answerSelected })
+      } else if (this.currentStepSymptoms === 4) {
+        this.STORE_SYMPTOMS({ type: 'Stress/Anxiete', id: this.answerSelected })
+      } else if (this.currentStepSymptoms === 5) {
+        this.STORE_SYMPTOMS({ type: 'Attention', id: this.answerSelected })
+      }
+
+      this.answerSelected = 'Z'
+
       const targetedQuestion = this.data.find(question => question.id === this.currentStepSymptoms + 1)
-      // console.log(targetedQuestion)
       this.onSurvey = targetedQuestion
       this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
+
+      if (this.currentStepSymptoms > 5) {
+        this.sendSurveySymptomsRequest()
+        this.currentStepSymptoms = 1
+        this.$router.push('/resultats-symptomes')
+      }
     }
   }
 }
@@ -273,6 +301,21 @@ export default {
 
     button {
       align-self: center;
+    }
+
+    &__question {
+      &-answers {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-answer {
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
     }
   }
 </style>
