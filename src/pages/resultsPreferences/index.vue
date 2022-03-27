@@ -5,7 +5,7 @@
     </h1>
     <div class="results__cards">
       <div class="results__card">
-        <h2 class="results__card-title">Psychologie</h2>
+        <h2 class="results__card-title">L. Padmavati</h2>
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <div class="results__card-footer">
           <img class="results__card-src" src="~/assets/images/1_psycho_17hledimanche.png" />
@@ -13,7 +13,15 @@
         </div>
       </div>
       <div class="results__card">
-        <h2 class="results__card-title">Sophrologie</h2>
+        <h2 class="results__card-title">R. Delon</h2>
+        <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
+        <div class="results__card-footer">
+          <img class="results__card-src" src="~/assets/images/2_sophro_17hledimanche.png" />
+          <ButtonSimple value="Plus" />
+        </div>
+      </div>
+      <div class="results__card">
+        <h2 class="results__card-title">F. Mazakka</h2>
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <div class="results__card-footer">
           <img class="results__card-src" src="~/assets/images/2_sophro_17hledimanche.png" />
@@ -21,18 +29,12 @@
         </div>
       </div>
     </div>
-    <p class="results__text">
-      C'est bon, je suis renseignée !
-    </p>
-    <router-link to="/introduction-preferences">
-      <ButtonSimple value="Continuer" />
-    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ResultsSymptomsPage'
+  name: 'ResultsPreferencesPage'
 }
 </script>
 
@@ -95,6 +97,6 @@ export default {
 
 <router>
   {
-    path: '/resultats-symptomes'
+    path: '/resultats-preferences'
   }
 </router>

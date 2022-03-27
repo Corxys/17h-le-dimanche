@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc(((100% / 3) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
+      <img class="survey__cursor" :style="{ top: `calc((50% - (15px / 2)) + (50% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
     </div>
     <div class="survey__content">
       <h1 class="survey__subtitle">
@@ -122,28 +122,21 @@ export default {
   },
   computed: {
     ...mapState({
-      currentStepPreferences: state => state.survey.currentStepPreferences
+      currentStepSymptoms: state => state.survey.currentStepSymptoms
     }),
 
     cssVars () {
       return {
-        '--multiplicator': this.currentStepPreferences
+        '--multiplicator': this.currentStepSymptoms
       }
     }
   },
   methods: {
-    ...mapMutations('survey', ['UPDATE_STEP_PREFERENCES']),
+    ...mapMutations('survey', ['UPDATE_STEP_SYMPTOMS']),
     changeStep () {
-      const targetedQuestion = this.data.find(question => question.id === this.currentStepPreferences + 1)
+      const targetedQuestion = this.data.find(question => question.id === 1)
       this.onSurvey = targetedQuestion
-      this.UPDATE_STEP_PREFERENCES({ id: this.currentStepPreferences + 1 })
-
-      if (this.currentStepPreferences === 4) {
-        const targetedQuestion = this.data.find(question => question.id === 1)
-        this.onSurvey = targetedQuestion
-        this.UPDATE_STEP_PREFERENCES({ id: 1 })
-        this.$router.push('/resultats-preferences')
-      }
+      this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
     }
   }
 }
@@ -194,7 +187,17 @@ export default {
       z-index: 2;
       position: absolute;
       width: 25px;
+      //height: 15px;
       transition: top 0.2s ease;
+    }
+
+    &__separator {
+      position: absolute;
+      top: calc(50% - (15px / 2));
+      width: 15px;
+      height: 15px;
+      background-color: $secondary;
+      border-radius: 20px;
     }
 
     &__content {
