@@ -11,7 +11,9 @@
     <p class="results__text">
       C'est bon, je suis renseignée !
     </p>
-    <ButtonSimple value="Continuer" />
+    <router-link to="/introduction-preferences">
+      <ButtonSimple value="Continuer" />
+    </router-link>
   </div>
 </template>
 

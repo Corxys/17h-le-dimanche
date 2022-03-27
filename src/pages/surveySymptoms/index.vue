@@ -101,7 +101,8 @@ export default {
         },
         {
           id: 3,
-          title: 'Vie sociale et relationnelle ',
+          // title: 'Vie sociale et relationnelle',
+          title: 'Social (conflit)',
           questions: [
             {
               id: 1,
@@ -129,7 +130,7 @@ export default {
         },
         {
           id: 4,
-          title: 'Anxiété, stress',
+          title: 'Anxiété/Stress',
           questions: [
             {
               id: 1,
