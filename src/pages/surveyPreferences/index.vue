@@ -89,7 +89,7 @@ export default {
             {
               id: 1,
               type: 'text',
-              title: 'Adresse de ton domicile'
+              title: 'Adresse de ton domicile',
             }
           ]
         },
