@@ -221,9 +221,11 @@ export default {
       this.onSurvey = targetedQuestion
       this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
 
-      if (this.currentStepSymptoms > 5) {
+      if (this.currentStepSymptoms === 6) {
+        const targetedQuestion = this.data.find(question => question.id === this.currentStepSymptoms + 1)
+        this.onSurvey = targetedQuestion
+        this.UPDATE_STEP_SYMPTOMS({ id: 1 })
         this.sendSurveySymptomsRequest()
-        this.currentStepSymptoms = 1
         this.$router.push('/resultats-symptomes')
       }
     }
@@ -302,13 +304,17 @@ export default {
     }
 
     &__question {
+      &-title {
+        margin-bottom: 50px;
+      }
+
       &-answers {
         display: flex;
         flex-direction: column;
       }
 
       &-answer {
-        margin-bottom: 10px;
+        margin-bottom: 40px;
 
         &:last-child {
           margin-bottom: 0px;

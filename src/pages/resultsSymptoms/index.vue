@@ -5,12 +5,12 @@
     </h1>
     <div class="results__cards">
       <div class="results__card">
-        <h2 class="results__card-title">Sophrologie</h2>
+        <h2 class="results__card-title">Psychologie</h2>
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <ButtonSimple value="Plus" />
       </div>
       <div class="results__card">
-        <h2 class="results__card-title">Naturopathie</h2>
+        <h2 class="results__card-title">Sophrologie</h2>
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
         <ButtonSimple value="Plus" />
       </div>
@@ -18,7 +18,7 @@
     <p class="results__text">
       C'est bon, je suis renseignée !
     </p>
-    <router-link to="/questionnaire-preferences">
+    <router-link to="/introduction-preferences">
       <ButtonSimple value="Continuer" />
     </router-link>
   </div>
@@ -63,6 +63,12 @@ export default {
 
       button {
         align-self: flex-end;
+        //border: 2px solid $primary;
+        color: $primary;
+        background-color: #f3ebd6;
+        outline: 2px solid $primary;
+        outline-offset: -2px;
+        padding: 15px 20px;
       }
     }
 
