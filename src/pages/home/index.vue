@@ -1,87 +1,81 @@
 <template>
   <div class="home">
-    <figure class="logo-wrapper">
-      <NuxtLogo class="logo" />
-    </figure>
+      <img class="logo" src="~/assets/images/logo_17hledimanche.png" alt="Logo de 17h le Dimanche">
+<!--    <figure class="logo-wrapper">-->
+<!--    </figure>-->
     <div class="buttons-wrapper">
       <div class="button-container">
-        <p>Curieux ? En questionnement ?</p>
-        <NuxtLink to="/questionnement">
+        <p>En questionnement ?</p>
+        <router-link to="/introduction-symptomes">
           <ButtonSimple value="Découvrir" />
-        </NuxtLink>
+        </router-link>
       </div>
       <div class="button-container">
         <p>Besoin d'aide ?</p>
-        <NuxtLink to="/questionnement">
+        <router-link to="/introduction-symptomes">
           <ButtonSimple value="Être orienté" />
-        </NuxtLink>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import NuxtLogo from '@/assets/images/logo-17h.svg'
 
 export default {
-  name: 'HomePage',
-  components: { NuxtLogo }
+  name: 'HomePage'
 }
 </script>
 
 <style scoped lang="scss">
   .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background-image: url('~/assets/images/home-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.2);
+    padding: 50px 30px;
     height: 100vh;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 100%);
+      height: 300px;
+      width: 100%;
+    }
   }
 
-  .logo-wrapper {
-    font-size: 18rem;
-    text-align: center;
-    margin-bottom: 4rem;
-
-    @media screen and (min-width: 568px) {
-      font-size: 23rem;
-      margin-bottom: 7rem;
-    }
-
-    @media screen and (min-width: 768px) {
-      font-size: 27rem;
-    }
-
-    @media screen and (min-width: 991px) {
-      margin-bottom: 0rem;
-    }
+  //.logo-wrapper {
+  //  font-size: 18rem;
+  //  text-align: center;
+  //  margin-bottom: 4rem;
+  //}
 
     .logo {
-      width: 1em;
-      height: 1em;
-      // vertical-align: top;
+      width: 275px;
+      margin-top: 100px;
     }
-  }
 
   .buttons-wrapper {
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 2rem;
     align-items: center;
 
-    @media screen and (min-width: 991px) {
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 1rem;
-      width: 50%;
-      margin: 0 auto;
-    }
-
     .button-container {
       display: grid;
       grid-template-columns: 1fr;
-      row-gap: 1rem;
+      row-gap: 10px;
       text-align: center;
+      color: $background;
     }
   }
 </style>

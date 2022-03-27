@@ -95,7 +95,7 @@ export default {
         {
           id: 4,
           title: 'Ce que nous ne faisons pas',
-          description: 'Remplacer un diagnostic ou encore gérer une crise, pour cela nous te renverrons vers ton médecin généraliste, vers les fils d\'écoute SOS ou vers les urgences psychiatriques.',
+          description: 'Remplacer un diagnostic ou encore gérer une crise, pour cela nous te renvoyons vers ton médecin généraliste, vers les fils d\'écoute SOS ou vers les urgences psychiatriques.',
           imgSrc: picto4
         }
       ]
