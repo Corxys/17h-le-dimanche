@@ -1,3 +1,4 @@
 export default () => ({
-  currentStepSymptoms: 1
+  currentStepSymptoms: 1,
+  answers: []
 })
