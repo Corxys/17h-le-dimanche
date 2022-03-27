@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc(100% / 3) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
+      <img class="survey__cursor" :style="{ top: `calc((100% / 3) * ${currentStepPreferences - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
     </div>
     <div class="survey__content">
       <h1 class="survey__subtitle">
