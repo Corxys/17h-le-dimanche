@@ -7,12 +7,18 @@
       <div class="results__card">
         <h2 class="results__card-title">Psychologie</h2>
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-        <ButtonSimple value="Plus" />
+        <div class="results__card-footer">
+          <img class="results__card-src" src="~/assets/images/1_psycho_17hledimanche.png" />
+          <ButtonSimple value="Plus" />
+        </div>
       </div>
       <div class="results__card">
         <h2 class="results__card-title">Sophrologie</h2>
         <p class="results__card-description">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-        <ButtonSimple value="Plus" />
+        <div class="results__card-footer">
+          <img class="results__card-src" src="~/assets/images/2_sophro_17hledimanche.png" />
+          <ButtonSimple value="Plus" />
+        </div>
       </div>
     </div>
     <p class="results__text">
@@ -61,9 +67,17 @@ export default {
         margin-bottom: 20px;
       }
 
+      &-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &-src {
+        height: 70px;
+      }
+
       button {
-        align-self: flex-end;
-        //border: 2px solid $primary;
         color: $primary;
         background-color: #f3ebd6;
         outline: 2px solid $primary;

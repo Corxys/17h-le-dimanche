@@ -2,7 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <div class="survey__cursor" :style="{ top: `calc((50% / 5) * ${currentStepSymptoms - 1})` }" />
+      <img class="survey__cursor" :style="{ top: `calc((50% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
       <div class="survey__separator" />
     </div>
     <div class="survey__content">
@@ -223,11 +223,11 @@ export default {
       this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
 
       if (this.currentStepSymptoms === 6) {
-        const targetedQuestion = this.data.find(question => question.id === this.currentStepSymptoms + 1)
+        const targetedQuestion = this.data.find(question => question.id === 1)
         this.onSurvey = targetedQuestion
         this.UPDATE_STEP_SYMPTOMS({ id: 1 })
         this.sendSurveySymptomsRequest()
-        this.$router.push('/resultats-symptomes')
+        // this.$router.push('/resultats-symptomes')
       }
     }
   }
@@ -277,9 +277,8 @@ export default {
 
     &__cursor {
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background-color: blue;
+      width: 25px;
+      //height: 15px;
       transition: top 0.2s ease;
     }
 

@@ -1,4 +1,10 @@
 export default () => ({
   currentStepSymptoms: 1,
-  answers: []
+  answers: {
+    'Alimentation': '',
+    'Sommeil': '',
+    'Social (conflit)': '',
+    'Stress/Anxiete': '',
+    'Attention': ''
+  }
 })
