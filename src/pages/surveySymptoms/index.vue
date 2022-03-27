@@ -2,8 +2,7 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc((50% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
-      <div class="survey__separator" />
+      <img class="survey__cursor" :style="{ top: `calc((100% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
     </div>
     <div class="survey__content">
       <h1 class="survey__subtitle">
@@ -278,17 +277,7 @@ export default {
     &__cursor {
       position: absolute;
       width: 25px;
-      //height: 15px;
       transition: top 0.2s ease;
-    }
-
-    &__separator {
-      position: absolute;
-      top: calc(50% - (15px / 2));
-      width: 15px;
-      height: 15px;
-      background-color: $secondary;
-      border-radius: 20px;
     }
 
     &__content {
