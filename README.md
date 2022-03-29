@@ -1,69 +1,45 @@
-# 17h-le-dimanche
+# 17h le Dimanche
 
-## Build Setup
+Au sein d'une équipe de 7 personnes, nous avons conçu ce prototype à l'occasion du Hacking Health Camp 2022. 17h le Dimanche est une application web mobile à destination des personnes souhaitant être orienté vers des professionnels de la santé pour des problématiques de santé mentale. L'idée n'est pas de remplacer le diagnostic d'un praticien, mais de créer une boussole digitale afin qu'il puisse trouver la solution la plus adaptée à
+
+## Équipe
+
+### Porteuse de projet :
+- Charlène Hameau : [LinkedIn](https://www.linkedin.com/in/charl%C3%A8ne-hameau-8b117ab0/)
+### Responsables du développement :
+- Laura Leydinger : [LinkedIn](https://www.linkedin.com/in/laura-leydinger/)
+- Jessie Fisch : [LinkedIn](https://www.linkedin.com/in/jessie-fisch-631814206/)
+### Designeur graphique :
+- Maxime Philippart : [LinkedIn](https://www.linkedin.com/in/maxime-philippart-bb5429160/) - [Bëhance](https://www.behance.net/maximephilipp2)
+### Développeurs :
+#### Front-end
+- Jean Weil (front) : [LinkedIn](https://www.linkedin.com/in/jean-weil/) - [GitHub](https://www.github.com/iroshiva)
+- Jenny-Lee Boulanger (front) : [LinkedIn](https://www.linkedin.com/in/jenny-lee-boulanger-7aa3b8b9/) - [GitHub](https://github.com/Corxys)
+#### Back-end
+- Jordan Namor  (back): [LinkedIn](https://www.linkedin.com/in/jordannmr) - [GitHub](https://github.com/jnamor)
+
+## Pré-requis
+
+Vous pouvez utiliser votre IDE et votre navigateur préféré, à savoir cependant que seule la version mobile est disponible, n'ayant pas eu le temps de développer le responsive dans le week-end.
+
+## Installation
 
 ```bash
-# install dependencies
+# installer les packages
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# ouvrir le serveur sur le port 0.0.0.0:3000
 $ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## Développé avec
 
-## Special Directories
+JavaScript, Vue.js, NuxtJS, SASS, Python, SQLite3
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+## Back-End
 
-### `assets`
+Lien du répertoire GitHub : https://github.com/iroshiva/17h_hackathon
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+## Liens utiles 
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+Sparkboard HHC2022 : https://hhcamp.sparkboard.com/project/61c1e1d547262e003ed4c50b
