@@ -1,6 +1,6 @@
 # 17h le Dimanche
 
-Au sein d'une équipe de 7 personnes, nous avons conçu ce prototype à l'occasion du Hacking Health Camp 2022. 17h le Dimanche est une application web mobile à destination des personnes souhaitant être orienté vers des professionnels de la santé pour des problématiques de santé mentale. L'idée n'est pas de remplacer le diagnostic d'un praticien, mais de créer une boussole digitale afin qu'il puisse trouver la solution la plus adaptée à
+Au sein d'une équipe de 7 personnes, nous avons conçu ce prototype à l'occasion du Hacking Health Camp 2022. 17h le Dimanche est une application web mobile à destination des personnes souhaitant être orienté vers des professionnels de la santé pour des problématiques de santé mentale. L'idée n'est pas de remplacer le diagnostic d'un praticien, mais de créer une boussole digitale afin qu'il puisse trouver la solution la plus adaptée à ses besoins.
 
 ## Équipe
 
