@@ -28,12 +28,11 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 30px;
+    padding: 3.125rem 1.875rem;
     height: 100vh;
+    width: 100vw;
 
     &__header {
-      margin-top: 30px;
-
       &-src {
         width: 400px;
         height: 400px;
@@ -43,10 +42,11 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
+      max-width: 350px;
     }
 
     &__text {
-      margin-bottom: 90px;
+      min-height: 4.375rem;
       text-align: center;
     }
   }
