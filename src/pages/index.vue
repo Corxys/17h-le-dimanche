@@ -1,31 +1,22 @@
 <template>
-  <div class="on-boarding">
-    <header class="on-boarding__header">
-      <img class="on-boarding__header-src" :src="onBoard.imgSrc" alt="Image de présentation de l'introduction" />
-    </header>
+  <main class="on-boarding">
+    <img class="on-boarding__image" :src="currentStep.imgSrc" alt="Image de présentation de l'introduction" />
     <div class="on-boarding__content">
-      <h1 class="on-boarding__logo">
-        {{ onBoard.title }}
+      <h1 class="on-boarding__title">
+        {{ currentStep.title }}
       </h1>
-      <p class="on-boarding__text">
-        {{ onBoard.description }}
+      <p class="on-boarding__description">
+        {{ currentStep.description }}
       </p>
-      <div class="on-boarding__footer">
-        <div class="on-boarding__steps">
-          <div id="step-1" class="on-boarding__step active" @click="changeStep" />
-          <div id="step-2" class="on-boarding__step" @click="changeStep" />
-          <div id="step-3" class="on-boarding__step" @click="changeStep" />
-          <div id="step-4" class="on-boarding__step" @click="changeStep" />
-        </div>
-      </div>
-      <Button :value="currentStep === 4 ? 'Commencer' : 'Suivant'" :change-step="changeStep" />
     </div>
-  </div>
+    <div class="on-boarding__steps">
+      <div v-for="step of steps" :id="`step-${step.id}`" :class="step.id === currentStep.id ? 'on-boarding__step active' : 'on-boarding__step'" @click="changeStep" />
+    </div>
+    <Button :value="currentStep.id !== 4 ? 'Suivant' : 'Commencer'" :change-step="changeStep" />
+  </main>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-
 import picto1 from '~/assets/images/picto1_17hledimanche.svg?inline'
 import picto2 from '~/assets/images/picto2_17hledimanche.svg?inline'
 import picto3 from '~/assets/images/picto3_17hledimanche.svg?inline'
@@ -35,45 +26,13 @@ export default {
   name: 'OnBoardingPage',
   data () {
     return {
-      onSurvey: {
-        id: 1,
-        title: 'Alimentation',
-        questions: [
-          {
-            id: 1,
-            title: 'Comment ça se passe dans ton assiette ?',
-            answers: [
-              {
-                id: 1,
-                text: 'Rien à signaler, je mange bien',
-                selected: 0
-              },
-              {
-                id: 2,
-                text: 'J\'ai parfois l\'appétit coupé ou besoin de grignoter',
-                selected: 0
-              },
-              {
-                id: 3,
-                text: 'Je saute souvent les repas ou les double',
-                selected: 0
-              },
-              {
-                id: 4,
-                text: 'J\'ai perdu l\'appétit ou je me réfugie dans le frigo de manière incontrôlée',
-                selected: 0
-              }
-            ]
-          }
-        ]
-      },
-      onBoard: {
+      currentStep: {
         id: 1,
         title: 'Bienvenue sur \n 17h le dimanche !',
         description: 'La boussole d\'orientation pour prendre soin de ta santé mentale.',
         imgSrc: picto1
       },
-      data: [
+      steps: [
         {
           id: 1,
           title: 'Bienvenue sur \n 17h le dimanche !',
@@ -101,37 +60,23 @@ export default {
       ]
     }
   },
-  computed: {
-    ...mapState({
-      currentStep: state => state.introduction.currentStep
-    })
-  },
   methods: {
-    ...mapMutations('introduction', ['UPDATE_STEP']),
     changeStep (event) {
+      // console.log('CHANGE STEP!!!')
       const steps = document.querySelectorAll('.on-boarding__step')
       if (event.target.id) {
-        this.UPDATE_STEP({ id: parseInt(event.target.id[5], 10) })
+        const stepId = parseInt(event.target.id.split('-')[1], 10)
+        this.currentStep = this.steps.find(step => step.id === stepId)
       } else {
-        if (this.currentStep === 4) {
+        if (this.currentStep.id < this.steps.length) {
+          this.currentStep = this.steps.find(step => step.id === this.currentStep.id + 1)
+        } else {
           this.$router.push('/accueil')
-          this.UPDATE_STEP({ id: 1 })
+          setTimeout(() => {
+            this.currentStep = this.steps.find(step => step.id === 1)
+          }, 1000)
         }
-
-        this.UPDATE_STEP({ id: this.currentStep + 1 })
       }
-
-      steps.forEach((step) => {
-        if (step.classList.value === 'on-boarding__step active') {
-          step.classList.remove('active')
-        }
-        if (parseInt(step.id[5], 10) === this.currentStep) {
-          step.classList.add('active')
-        }
-      })
-
-      const targetedStep = this.data.find(step => step.id === this.currentStep)
-      this.onBoard = targetedStep
     }
   }
 }
@@ -143,38 +88,32 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    padding: 50px 30px;
+    padding: 3.125rem 1.875rem;
     height: 100vh;
+    width: 100vw;
 
-    &__header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      &-src {
-        width: 275px;
-        height: 275px;
-      }
+    &__image {
+      width: 80%;
+      max-width: 350px;
     }
 
     &__content {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
+      max-width: 350px;
     }
 
-    &__text {
+    &__description {
       text-align: center;
-      margin-bottom: 30px;
-      height: 70px;
+      margin-bottom: 1.875rem;
+      min-height: 4.375rem;
     }
 
     &__steps {
       display: flex;
-      margin-bottom: 50px;
+      margin-bottom: 3.125rem;
     }
-
     &__step {
       cursor: pointer;
       height: 12px;
@@ -185,7 +124,7 @@ export default {
       transition: width 0.2s ease;
 
       &:last-child {
-        margin-right: 0px;
+        margin-right: 0;
       }
 
       &.active {

@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-      <img class="logo" src="~/assets/images/logo_17hledimanche.png" alt="Logo de 17h le Dimanche">
-<!--    <figure class="logo-wrapper">-->
-<!--    </figure>-->
+    <img class="logo" src="~/assets/images/logo_17hledimanche.png" alt="Logo de 17h le Dimanche">
     <div class="buttons-wrapper">
       <div class="button-container">
         <p>En questionnement ?</p>

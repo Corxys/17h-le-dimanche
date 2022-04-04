@@ -2,14 +2,14 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc((100% / 5) * ${currentStepSymptoms - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
+      <img class="survey__cursor" :style="{ top: `calc((100% / 5) * ${currentSurvey.id - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
     </div>
     <div class="survey__content">
       <h1 class="survey__subtitle">
-        {{ onSurvey.title }}
+        {{ currentSurvey.title }}
       </h1>
       <div class="survey__questions">
-        <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
+        <div v-for="question of currentSurvey.questions" :key="question.id" class="survey__question">
           <h2 class="survey__question-title">
             {{ question.title }}
           </h2>
@@ -24,14 +24,14 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'SurveyPage',
   data () {
     return {
       answerSelected: 'Z',
-      onSurvey: {
+      currentSurvey: {
         id: 1,
         title: 'Alimentation',
         questions: [
@@ -59,14 +59,32 @@ export default {
           }
         ]
       },
-      data: [
+      surveys: [
         {
           id: 1,
           title: 'Alimentation',
           questions: [
             {
               id: 1,
-              title: 'Comment ça se passe dans ton assiette ?'
+              title: 'Comment ça se passe dans ton assiette ?',
+              answers: [
+                {
+                  id: 'Z',
+                  text: 'Rien à signaler, je mange bien'
+                },
+                {
+                  id: 'A',
+                  text: 'J\'ai parfois l\'appétit coupé ou besoin de grignoter'
+                },
+                {
+                  id: 'B',
+                  text: 'Je saute souvent les repas ou les double'
+                },
+                {
+                  id: 'C',
+                  text: 'J\'ai perdu l\'appétit ou je me réfugie dans le frigo de manière incontrôlée'
+                }
+              ]
             }
           ]
         },
@@ -100,8 +118,7 @@ export default {
         },
         {
           id: 3,
-          // title: 'Vie sociale et relationnelle',
-          title: 'Social (conflit)',
+          title: 'Vie sociale et relationnelle',
           questions: [
             {
               id: 1,
@@ -129,7 +146,7 @@ export default {
         },
         {
           id: 4,
-          title: 'Anxiété/Stress',
+          title: 'Anxiété et stress',
           questions: [
             {
               id: 1,
@@ -187,10 +204,6 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      currentStepSymptoms: state => state.survey.currentStepSymptoms
-    }),
-
     cssVars () {
       return {
         '--multiplicator': this.currentStepSymptoms
@@ -198,36 +211,45 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('survey', ['UPDATE_STEP_SYMPTOMS']),
     ...mapMutations('survey', ['STORE_SYMPTOMS']),
     ...mapActions('survey', ['sendSurveySymptomsRequest']),
 
     changeStep () {
-      if (this.currentStepSymptoms === 1) {
+      if (this.currentSurvey.id === 1) {
         this.STORE_SYMPTOMS({ type: 'Alimentation', id: this.answerSelected })
-      } else if (this.currentStepSymptoms === 2) {
+      } else if (this.currentSurvey.id === 2) {
         this.STORE_SYMPTOMS({ type: 'Sommeil', id: this.answerSelected })
-      } else if (this.currentStepSymptoms === 3) {
+      } else if (this.currentSurvey.id === 3) {
         this.STORE_SYMPTOMS({ type: 'Social (conflit)', id: this.answerSelected })
-      } else if (this.currentStepSymptoms === 4) {
+      } else if (this.currentSurvey.id === 4) {
         this.STORE_SYMPTOMS({ type: 'Stress/Anxiete', id: this.answerSelected })
-      } else if (this.currentStepSymptoms === 5) {
+      } else if (this.currentSurvey.id === 5) {
         this.STORE_SYMPTOMS({ type: 'Attention', id: this.answerSelected })
       }
 
       this.answerSelected = 'Z'
 
-      const targetedQuestion = this.data.find(question => question.id === this.currentStepSymptoms + 1)
-      this.onSurvey = targetedQuestion
-      this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
-
-      if (this.currentStepSymptoms === 6) {
-        const targetedQuestion = this.data.find(question => question.id === 1)
-        this.onSurvey = targetedQuestion
-        this.UPDATE_STEP_SYMPTOMS({ id: 1 })
-        this.sendSurveySymptomsRequest()
+      if (this.currentSurvey.id < this.surveys.length) {
+        this.currentSurvey = this.surveys.find(survey => survey.id === this.currentSurvey.id + 1)
+      } else {
         this.$router.push('/resultats-symptomes')
+        // this.sendSurveySymptomsRequest()
+        setTimeout(() => {
+          this.currentSurvey = this.surveys.find(step => step.id === 1)
+        }, 1000)
       }
+
+      // const targetedQuestion = this.data.find(question => question.id === this.currentStepSymptoms + 1)
+      // this.onSurvey = targetedQuestion
+      // this.UPDATE_STEP_SYMPTOMS({ id: this.currentStepSymptoms + 1 })
+      //
+      // if (this.currentStepSymptoms === 6) {
+      //   const targetedQuestion = this.data.find(question => question.id === 1)
+      //   this.onSurvey = targetedQuestion
+      //   this.UPDATE_STEP_SYMPTOMS({ id: 1 })
+      //   this.sendSurveySymptomsRequest()
+      //   this.$router.push('/resultats-symptomes')
+      // }
     }
   }
 }

@@ -2,14 +2,14 @@
   <div class="survey">
     <div class="survey__timeline">
       <div class="survey__line" />
-      <img class="survey__cursor" :style="{ top: `calc((100% / 3) * ${currentStepPreferences - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
+      <img class="survey__cursor" :style="{ top: `calc((100% / 3) * ${currentSurvey.id - 1})` }" src="~/assets/images/le-ptit-mec_17hledimanche.png" />
     </div>
     <div class="survey__content">
       <h1 class="survey__subtitle">
-        {{ onSurvey.title }}
+        {{ currentSurvey.title }}
       </h1>
       <div class="survey__questions">
-        <div v-for="question of onSurvey.questions" :key="question.id" class="survey__question">
+        <div v-for="question of currentSurvey.questions" :key="question.id" class="survey__question">
           <h2 class="survey__question-title">
             {{ question.title }}
           </h2>
@@ -25,14 +25,12 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-
 export default {
   name: 'SurveyPage',
   data () {
     return {
       answerSelected: 'Z',
-      onSurvey: {
+      currentSurvey: {
         id: 1,
         title: 'Genre',
         questions: [
@@ -57,7 +55,7 @@ export default {
           }
         ]
       },
-      data: [
+      surveys: [
         {
           id: 1,
           title: 'Genre',
@@ -123,10 +121,6 @@ export default {
     }
   },
   computed: {
-    ...mapState({
-      currentStepPreferences: state => state.survey.currentStepPreferences
-    }),
-
     cssVars () {
       return {
         '--multiplicator': this.currentStepPreferences
@@ -134,17 +128,14 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('survey', ['UPDATE_STEP_PREFERENCES']),
     changeStep () {
-      const targetedQuestion = this.data.find(question => question.id === this.currentStepPreferences + 1)
-      this.onSurvey = targetedQuestion
-      this.UPDATE_STEP_PREFERENCES({ id: this.currentStepPreferences + 1 })
-
-      if (this.currentStepPreferences === 4) {
-        const targetedQuestion = this.data.find(question => question.id === 1)
-        this.onSurvey = targetedQuestion
-        this.UPDATE_STEP_PREFERENCES({ id: 1 })
+      if (this.currentSurvey.id < this.surveys.length) {
+        this.currentSurvey = this.surveys.find(survey => survey.id === this.currentSurvey.id + 1)
+      } else {
         this.$router.push('/resultats-preferences')
+        setTimeout(() => {
+          this.currentSurvey = this.surveys.find(step => step.id === 1)
+        }, 1000)
       }
     }
   }
