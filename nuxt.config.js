@@ -1,4 +1,5 @@
 export default {
+  target: 'static',
   // source directory
   srcDir: 'src',
   // build output directory
